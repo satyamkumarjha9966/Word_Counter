@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        /* body{
+            padding: 50px 100px;
+        } */
+        h1{
+            text-align: center;
+            background-color: orange;
+            padding: 10px;
+            margin: 0px;
+        }
+        #textbox{
+            width: 98.95%;
+            border-color: orange;
+            border-width: 4px;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 20px;
+        }
+        p{
+            text-align: center;
+            background-color: orange;
+            font-size: 30px;
+            font-weight: bold;
+            margin: 0px;
+            padding: 10px;
+        }
+        span{
+          font-size: 50px;
+          font-weight: bold;
+          background-color: black;
+          padding: 10px 25px;
+          color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Word and Character Counter</h1>
+    <textarea id="textbox" cols="30" rows="10"></textarea>
+    <p>
+        <span id="word">0</span> Words and <span id="char">0</span> Character
+    </p>
+
+    <script>
+        let textbox = document.getElementById('textbox')
+
+        textbox.addEventListener('input', function () {
+            let text = this.value;
+            let char = text.length;
+            document.getElementById('char').innerText = char;
+
+            text = text.trim();        // starting aur end ke space ki vajah se naya word nahi count karega
+            let words = text.split(" ");               // OUTPUT = ['this', 'is', 'js', 'pro'] = array me split kar dega word ko
+            let cleanWord = words.filter((ele) => {            // filter bhi ek callback function leta hai islie use kiya taki word ke beech wale space ko ignore kar sake
+                return ele != "";
+            })
+            document.getElementById('word').innerText = cleanWord.length;
+
+        })
+    </script>
+</body>
+</html>
